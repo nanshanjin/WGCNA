@@ -101,7 +101,7 @@ pdf(file = "step1.sampleClustering.pdf", width = 12, height = 9);
 plot(sampleTree, main = "Sample clustering to detect outliers", sub="", xlab="")
 dev.off()
 ```
-
+![样本聚类图](https://github.com/nanshanjin/WGCNA/blob/master/step1.sampleClustering.png)
 ### step3 确定power值
 soft thresholding power值即软阈值的筛选原则是使构建的网络更符合无标度网络特征
 横轴是Soft threshold (power)，纵轴是无标度网络的评估参数，数值越高，
@@ -131,6 +131,7 @@ main = paste("Mean connectivity"))
 text(sft$fitIndices[,1], sft$fitIndices[,5], labels=powers, cex=cex1,col="red")
 ```
 关键就是理解pickSoftThreshold函数及其返回的对象，最佳的beta值就是sft$powerEstimate
+![power图](https://github.com/nanshanjin/WGCNA/blob/master/step2.Model-Fit.png)
 
 ### step4 构建共表达矩阵
 构建共表达矩阵是WGCNA分析的核心，其核心思想是把表达矩阵的基因分类成十几个模块
@@ -150,6 +151,7 @@ net = blockwiseModules(datExpr, power = 6,#6
 然后就是分类模块的可视化
 这里用不同的颜色来代表那些所有的模块，其中灰色默认是无法归类于任何模块的那些基因，
 如果灰色模块里面的基因太多，那么前期对表达矩阵挑选基因的步骤可能就不太合适。
+
 ```shell
 mergedColors = labels2colors(net$colors)
 plotDendroAndColors(net$dendrograms[[1]], mergedColors[net$blockGenes[[1]]],
@@ -157,7 +159,7 @@ plotDendroAndColors(net$dendrograms[[1]], mergedColors[net$blockGenes[[1]]],
           , guideHang = 0.05)
 
 ```
-
+![模块图](https://github.com/nanshanjin/WGCNA/blob/master/step1.plotDendroAndColors.png)
 ### step5 模块和性状的关联分析
 通过模块与各种表型的相关系数，可以很清楚的挑选自己感兴趣的模块进行下游分析了。
 这个图就是把moduleTraitCor这个矩阵给用热图可视化一下。
@@ -184,7 +186,7 @@ labeledHeatmap(Matrix = moduleTraitCor,
        zlim = c(-1,1),
        main = paste("Module-trait relationships"))
 ```
-
+![热图](https://github.com/nanshanjin/metagenomics/blob/master/1.PNG)
 ### step6 挑选感兴趣的的模块内的基因进行分析
 ```shell
 ############################################################
