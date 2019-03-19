@@ -54,7 +54,13 @@
 这个信息可拿来构建网络或绘制TOM图。
 
 ## 分析步骤
-*单组数据的关联分析*
+WGCNA官方给出了三种分析类型
+1、网络分析，即表达数据与性状关联分析
+2、一致性分析，用两组数据进行关联
+3、模拟数据分析
+
+# Network analysis 网络分析，单组数据的关联分析
+
 ### step1 数据格式
 1、表达数据文件的格式
 即表达量，行为样本，列放对应的表达量
@@ -275,3 +281,6 @@ cyt = exportNetworkToCytoscape(
         nodeAttr = moduleColors[inModule]
         );
 ```
+
+# Consensus analysis两组数据的一致性分析
+
