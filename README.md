@@ -159,7 +159,8 @@ plotDendroAndColors(net$dendrograms[[1]], mergedColors[net$blockGenes[[1]]],
           , guideHang = 0.05)
 
 ```
-![模块图](https://github.com/nanshanjin/WGCNA/blob/master/step1.plotDendroAndColors.png)
+
+![模块图](https://github.com/nanshanjin/WGCNA/blob/master/step2.plotDendroAndColors.png)
 ### step5 模块和性状的关联分析
 通过模块与各种表型的相关系数，可以很清楚的挑选自己感兴趣的模块进行下游分析了。
 这个图就是把moduleTraitCor这个矩阵给用热图可视化一下。
@@ -186,7 +187,7 @@ labeledHeatmap(Matrix = moduleTraitCor,
        zlim = c(-1,1),
        main = paste("Module-trait relationships"))
 ```
-![热图](https://github.com/nanshanjin/metagenomics/blob/master/1.PNG)
+![热图](https://github.com/nanshanjin/WGCNA/blob/master/step3.labeledHeatmap.png)
 ### step6 挑选感兴趣的的模块内的基因进行分析
 ```shell
 ############################################################
@@ -222,6 +223,7 @@ verboseScatterplot(abs(geneModuleMembership[moduleGenes, column]),
                    cex.main = 1.2, cex.lab = 1.2, cex.axis = 1.2, col = module)
 dev.off()
 ```
+![散点图](https://github.com/nanshanjin/WGCNA/blob/master/step3.verboseScatterplot.png)
 ### step7 选取指定模块基因名
 
 ```shell
